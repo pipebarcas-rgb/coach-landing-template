@@ -1,137 +1,533 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sprint 14D Basket Adultos</title>
-<style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #0e0e0e;
-    color: #ffffff;
-    line-height: 1.6;
-}
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
-h1 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-}
-h2 {
-    margin-top: 60px;
-    font-size: 1.5rem;
-}
-p {
-    color: #cccccc;
-}
-ul {
-    margin-top: 20px;
-}
-li {
-    margin-bottom: 10px;
-}
-.cta {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 16px 28px;
-    background-color: #25D366;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-}
-.section {
-    margin-top: 60px;
-}
-.highlight {
-    color: #ffffff;
-    font-weight: bold;
-}
-.footer {
-    margin-top: 80px;
-    font-size: 0.9rem;
-    color: #777;
-}
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.8rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sprint 14D: programa semi-personalizado de basket para adultos amateurs en Puerto Montt. Mejora tu toma de decisiones, spacing y pick & roll en 14 días." />
+  <title>Sprint 14D Basket Adultos — Puerto Montt</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================
+       VARIABLES Y RESET
+    =========================== */
+    :root {
+      --color-bg:        #0b0b0b;
+      --color-surface:   #141414;
+      --color-border:    #252525;
+      --color-texto:     #e8e8e8;
+      --color-muted:     #888888;
+      --color-acento:    #F97316;   /* naranja cancha */
+      --color-acento-bg: #1a0f06;
+      --color-cta:       #25D366;   /* WhatsApp verde */
+      --color-cta-hover: #1fba57;
+
+      --fuente-display: 'Barlow Condensed', sans-serif;
+      --fuente-cuerpo:  'Barlow', sans-serif;
+
+      --espacio-xs:  8px;
+      --espacio-sm:  16px;
+      --espacio-md:  32px;
+      --espacio-lg:  64px;
+      --espacio-xl:  96px;
+
+      --radio:       6px;
+      --max-ancho:   860px;
+
+      --transicion:  0.22s ease;
     }
-}
-</style>
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-texto);
+      font-family: var(--fuente-cuerpo);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===========================
+       LAYOUT
+    =========================== */
+    .contenedor {
+      max-width: var(--max-ancho);
+      margin-inline: auto;
+      padding-inline: var(--espacio-md);
+    }
+
+    section {
+      padding-block: var(--espacio-lg);
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ===========================
+       TIPOGRAFÍA
+    =========================== */
+    h1, h2 {
+      font-family: var(--fuente-display);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: var(--espacio-md);
+    }
+
+    p { color: var(--color-muted); }
+
+    strong { color: var(--color-texto); font-weight: 600; }
+
+    /* ===========================
+       HÉROE
+    =========================== */
+    .hero {
+      padding-block: var(--espacio-xl) var(--espacio-lg);
+      border-top: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Línea decorativa de cancha */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -60px;
+      width: 320px; height: 320px;
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .hero-etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--espacio-xs);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      background: var(--color-acento-bg);
+      border: 1px solid var(--color-acento);
+      border-radius: var(--radio);
+      padding: 5px 12px;
+      margin-bottom: var(--espacio-md);
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      margin-bottom: var(--espacio-sm);
+    }
+
+    /* Acento naranja en palabra clave */
+    .hero h1 em {
+      font-style: normal;
+      color: var(--color-acento);
+    }
+
+    .hero-subtitulo {
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: var(--espacio-md);
+    }
+
+    /* ===========================
+       LISTA DE BENEFICIOS (hero)
+    =========================== */
+    .lista-beneficios {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--espacio-xs);
+      margin-bottom: var(--espacio-md);
+    }
+
+    .lista-beneficios li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--color-texto);
+      font-size: 0.95rem;
+    }
+
+    .lista-beneficios li::before {
+      content: '✓';
+      color: var(--color-cta);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===========================
+       BOTÓN CTA
+    =========================== */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      background-color: var(--color-cta);
+      color: #000;
+      font-family: var(--fuente-cuerpo);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radio);
+      transition: background-color var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+      /* Seguridad: abre nueva pestaña de forma segura */
+      /* rel se pone en el HTML */
+    }
+
+    .btn-cta:hover,
+    .btn-cta:focus-visible {
+      background-color: var(--color-cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-cta:active { transform: translateY(0); }
+
+    /* Ícono WhatsApp (SVG inline vía CSS mask) */
+    .btn-cta .icono-wa {
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E");
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+
+    /* ===========================
+       CUPOS / URGENCIA
+    =========================== */
+    .urgencia {
+      margin-top: var(--espacio-sm);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    .urgencia strong { color: var(--color-acento); }
+
+    /* ===========================
+       LISTA GENÉRICA DE SECCIONES
+    =========================== */
+    .lista-seccion {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .lista-seccion li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+    }
+
+    .lista-seccion li::before {
+      content: '—';
+      color: var(--color-acento);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* ===========================
+       TARJETAS (qué incluye)
+    =========================== */
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--espacio-sm);
+      margin-top: var(--espacio-md);
+    }
+
+    .tarjeta {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radio);
+      padding: var(--espacio-md) var(--espacio-sm);
+      transition: border-color var(--transicion);
+    }
+
+    .tarjeta:hover { border-color: var(--color-acento); }
+
+    .tarjeta-numero {
+      font-family: var(--fuente-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--color-acento);
+      line-height: 1;
+      margin-bottom: var(--espacio-xs);
+    }
+
+    .tarjeta-titulo {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-texto);
+      margin-bottom: 4px;
+    }
+
+    .tarjeta p { font-size: 0.85rem; }
+
+    /* ===========================
+       CALLOUT (frase clave)
+    =========================== */
+    .callout {
+      background: var(--color-acento-bg);
+      border-left: 3px solid var(--color-acento);
+      border-radius: 0 var(--radio) var(--radio) 0;
+      padding: var(--espacio-sm) var(--espacio-md);
+      margin-top: var(--espacio-md);
+    }
+
+    .callout p {
+      color: var(--color-texto);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* ===========================
+       SECCIÓN FINAL CTA
+    =========================== */
+    .seccion-cta {
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .seccion-cta h2 { margin-bottom: var(--espacio-sm); }
+
+    .seccion-cta p {
+      max-width: 480px;
+      margin-inline: auto;
+      margin-bottom: var(--espacio-md);
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      padding-block: var(--espacio-md);
+      color: var(--color-muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--espacio-sm);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 600px) {
+      .contenedor { padding-inline: var(--espacio-sm); }
+
+      .hero { padding-block: var(--espacio-lg) var(--espacio-md); }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="container">
+  <!-- ========================
+       HÉROE
+  ========================= -->
+  <main>
+    <section class="hero">
+      <div class="contenedor">
 
-<h1>Toma mejores decisiones en la cancha en 14 días (aunque tengas 30–45 y poco tiempo)</h1>
+        <!-- Etiqueta -->
+        <div class="hero-etiqueta" aria-label="Programa disponible en Puerto Montt">
+          🏀 Puerto Montt · 14 días · 10 cupos
+        </div>
 
-<p>Sprint semi-personalizado para adultos amateurs en Puerto Montt. Aprende a decidir bajo presión, entender spacing y leer el pick & roll sin quedar congelado.</p>
+        <!-- Titular principal -->
+        <h1>
+          Toma mejores decisiones<br />
+          en la cancha en <em>14 días</em>
+        </h1>
 
-<ul>
-<li>✔ Decides más rápido cuando te presionan</li>
-<li>✔ Te mueves con spacing real y empiezas a sumar</li>
-<li>✔ Sabes qué hacer en el pick & roll en 2 segundos</li>
-</ul>
+        <!-- Subtítulo -->
+        <p class="hero-subtitulo">
+          Sprint semi-personalizado para adultos amateurs de 30–45 años con poco tiempo.
+          Aprende a decidir bajo presión, entender spacing y leer el pick &amp; roll sin quedar congelado.
+        </p>
 
-<a class="cta" href="https://wa.me/56985962885" target="_blank">Postula por WhatsApp (10 cupos)</a>
+        <!-- Beneficios -->
+        <ul class="lista-beneficios" aria-label="Beneficios del programa">
+          <li>Decides más rápido cuando te presionan</li>
+          <li>Te mueves con spacing real y empiezas a sumar</li>
+          <li>Sabes qué hacer en el pick &amp; roll en 2 segundos</li>
+        </ul>
 
-<div class="section">
-<h2>¿Te pasa esto?</h2>
-<ul>
-<li>En entrenamiento juegas bien, pero en partido te apuras y regalas pelotas</li>
-<li>Te quedas mirando la jugada en vez de ocupar el espacio correcto</li>
-<li>Dudas en el pick & roll y llegas tarde</li>
-<li>Sales frustrado porque sabes que podrías jugar mejor</li>
-</ul>
-<p class="highlight">No es falta de físico. Es lectura y decisiones.</p>
-</div>
+        <!-- CTA principal -->
+        <a
+          class="btn-cta"
+          href="https://wa.me/56985962885"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Postular al Sprint 14D por WhatsApp"
+        >
+          <span class="icono-wa" aria-hidden="true"></span>
+          Postula por WhatsApp
+        </a>
 
-<div class="section">
-<h2>Qué es el Sprint 14D</h2>
-<ul>
-<li>4 sesiones en grupo chico</li>
-<li>Corrección directa en cancha</li>
-<li>1 análisis de partido en video</li>
-</ul>
-<p>Aquí no vienes a correr por correr. Vienes a entender el juego.</p>
-</div>
+        <!-- Urgencia -->
+        <p class="urgencia">
+          Próximo grupo inicia esta semana — <strong>cupos reales: 10</strong>
+        </p>
 
-<div class="section">
-<h2>Qué te llevas</h2>
-<ul>
-<li>Sistema simple para moverte con spacing correcto</li>
-<li>Marco claro para jugar pick & roll sin dudar</li>
-<li>Ajustes personales concretos</li>
-<li>Más calma cuando el partido se acelera</li>
-</ul>
-</div>
+      </div>
+    </section>
 
-<div class="section">
-<h2>Para quién es</h2>
-<ul>
-<li>Adultos amateurs que quieren rendir mejor ahora</li>
-<li>Personas dispuestas a ser corregidas</li>
-<li>Jugadores que quieren entender el juego</li>
-</ul>
-</div>
+    <!-- ========================
+         ¿TE PASA ESTO?
+    ========================= -->
+    <section aria-labelledby="titulo-problema">
+      <div class="contenedor">
+        <h2 id="titulo-problema">¿Te pasa esto?</h2>
 
-<div class="section">
-<a class="cta" href="https://wa.me/56985962885?text=Hola%2C%20quiero%20postular%20al%20Sprint%2014D.%20Edad%3A%20%20Posici%C3%B3n%3A%20%20%C2%BFQu%C3%A9%20quiero%20mejorar%3F%20" target="_blank">Postula ahora por WhatsApp</a>
-</div>
-<p style="margin-top:15px; color:#aaaaaa; font-size:0.9rem;">
-Próximo grupo inicia esta semana.<br>
-Cupos reales: 10.
-</p>
-<div class="footer">
-Entrenador a cargo: Marquis<br>
-Puerto Montt – Cupos limitados
-</div>
+        <ul class="lista-seccion">
+          <li>En entrenamiento juegas bien, pero en partido te apuras y regalas pelotas</li>
+          <li>Te quedas mirando la jugada en vez de ocupar el espacio correcto</li>
+          <li>Dudas en el pick &amp; roll y llegas tarde</li>
+          <li>Sales frustrado porque sabes que podrías jugar mejor</li>
+        </ul>
 
-</div>
+        <div class="callout" role="note">
+          <p>No es falta de físico. Es lectura y decisiones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         QUÉ ES EL SPRINT 14D
+    ========================= -->
+    <section aria-labelledby="titulo-sprint">
+      <div class="contenedor">
+        <h2 id="titulo-sprint">Qué es el Sprint 14D</h2>
+
+        <p style="margin-bottom: var(--espacio-md);">
+          Aquí no vienes a correr por correr. Vienes a entender el juego.
+        </p>
+
+        <!-- Tarjetas de componentes -->
+        <div class="tarjetas">
+          <div class="tarjeta">
+            <div class="tarjeta-numero">4</div>
+            <div class="tarjeta-titulo">Sesiones en grupo chico</div>
+            <p>Dinámica de trabajo real, no masiva.</p>
+          </div>
+          <div class="tarjeta">
+            <div class="tarjeta-numero">1:1</div>
+            <div class="tarjeta-titulo">Corrección directa en cancha</div>
+            <p>Feedback inmediato en cada jugada.</p>
+          </div>
+          <div class="tarjeta">
+            <div class="tarjeta-numero">🎥</div>
+            <div class="tarjeta-titulo">Análisis de partido en video</div>
+            <p>Ves tus propias decisiones desde afuera.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         QUÉ TE LLEVAS
+    ========================= -->
+    <section aria-labelledby="titulo-resultados">
+      <div class="contenedor">
+        <h2 id="titulo-resultados">Qué te llevas</h2>
+
+        <ul class="lista-seccion">
+          <li>Sistema simple para moverte con spacing correcto</li>
+          <li>Marco claro para jugar pick &amp; roll sin dudar</li>
+          <li>Ajustes personales concretos</li>
+          <li>Más calma cuando el partido se acelera</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================
+         PARA QUIÉN ES
+    ========================= -->
+    <section aria-labelledby="titulo-para-quien">
+      <div class="contenedor">
+        <h2 id="titulo-para-quien">Para quién es</h2>
+
+        <ul class="lista-seccion">
+          <li>Adultos amateurs que quieren rendir mejor ahora</li>
+          <li>Personas dispuestas a ser corregidas</li>
+          <li>Jugadores que quieren entender el juego, no solo correr</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================
+         CTA FINAL
+    ========================= -->
+    <section class="seccion-cta" aria-labelledby="titulo-cta">
+      <div class="contenedor">
+        <h2 id="titulo-cta">10 cupos. Esta semana.</h2>
+        <p>Si llevas tiempo queriendo entender mejor el juego, este es el momento.</p>
+
+        <a
+          class="btn-cta"
+          href="https://wa.me/56985962885?text=Hola%2C%20quiero%20postular%20al%20Sprint%2014D.%20Edad%3A%20%20Posici%C3%B3n%3A%20%20%C2%BFQu%C3%A9%20quiero%20mejorar%3F%20"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Postular al Sprint 14D con mensaje prellenado por WhatsApp"
+        >
+          <span class="icono-wa" aria-hidden="true"></span>
+          Postula ahora por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================
+       FOOTER
+  ========================= -->
+  <footer>
+    <div class="contenedor">
+      <div class="footer-inner">
+        <span>Entrenador: <strong>Marquis</strong> · Puerto Montt</span>
+        <span>Cupos limitados · Sprint 14D Basket Adultos</span>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
