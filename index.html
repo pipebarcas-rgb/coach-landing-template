@@ -182,7 +182,18 @@
       margin-bottom: var(--espacio-md);
     }
     .hero-precio span {
+      display: block;
+    }
+    .hero-precio .valor-detalle {
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+    .hero-precio .valor-precio {
       color: var(--color-acento);
+      font-size: 1.2rem;
     }
     .urgencia {
       margin-top: var(--espacio-sm);
@@ -595,7 +606,10 @@
         <h1 class="fade-up">DEJA DE PERDER LA PELOTA CUANDO TE PRESIONAN</h1>
         <p class="hero-subtitulo fade-up">Entrena 4 sesiones con Marquis Johnson, ex jugador profesional, y aprende qué hacer cuando el partido se acelera: spacing, pick &amp; roll y decisiones rápidas en cancha.</p>
         <p class="cta-nota fade-up">Para adultos que ya juegan, pero quieren dejar de improvisar en partido.</p>
-        <div class="hero-precio fade-up">$60.000 CLP <span>— el ciclo completo de 14 días</span></div>
+        <div class="hero-precio fade-up">
+          <span class="valor-detalle">4 entrenamientos + corrección en cancha + análisis de video</span>
+          <span class="valor-precio">$60.000 CLP — ciclo completo</span>
+        </div>
         <ul class="lista-beneficios fade-up">
           <li>Decides más rápido cuando te presionan</li>
           <li>Te mueves con spacing real y empiezas a sumar</li>
@@ -623,6 +637,18 @@
         </ul>
         <div class="callout fade-up">
           <p>No es falta de físico. Es lectura y decisiones. Y eso se entrena.</p>
+        </div>
+        <a class="btn-cta fade-up" href="https://wa.me/56985962885?text=Hola%20Marquis%2C%20vi%20el%20Sprint%2014D%20para%20adultos%20en%20Puerto%20Montt.%20%C2%BFTodav%C3%ADa%20quedan%20cupos%20para%20empezar%20el%20lunes%204%20de%20mayo%3F" target="_blank" rel="noopener noreferrer" onclick="if (typeof fbq === 'function') { fbq('track', 'Contact'); } setTimeout(function(){ window.open(this.href, '_blank'); }.bind(this), 250); return false;" style="margin-top: var(--espacio-md);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#000" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.058 23.5l5.818-1.527A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.019-1.382l-.36-.214-3.732.979.997-3.645-.234-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Preguntar si quedan cupos
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="contenedor">
+        <div class="callout fade-up">
+          <p>Ya hay adultos entrenando con Marquis en Puerto Montt. Abajo puedes ver un testimonio real de un alumno.</p>
         </div>
       </div>
     </section>
@@ -694,37 +720,22 @@
       </div>
     </section>
 
-    <!-- ════ 6. STACK DE VALOR + PRECIO ════ -->
+    <!-- ════ 6. QUÉ INCLUYE ════ -->
     <section>
       <div class="contenedor">
-        <h2 class="fade-up">Lo que incluye y cuánto cuesta</h2>
-        <div class="stack-tabla fade-up">
-          <div class="stack-fila">
-            <span class="stack-item">4 sesiones grupales con ex jugador de Primera División</span>
-            <span class="stack-valor">$80.000</span>
-          </div>
-          <div class="stack-fila">
-            <span class="stack-item">Corrección personalizada 1:1 en cancha</span>
-            <span class="stack-valor">$40.000</span>
-          </div>
-          <div class="stack-fila">
-            <span class="stack-item">Análisis de video de tu propio juego</span>
-            <span class="stack-valor">$30.000</span>
-          </div>
-          <div class="stack-fila stack-total">
-            <span class="stack-item">Valor de referencia total</span>
-            <span class="stack-valor">$150.000</span>
-          </div>
-        </div>
-        <div class="stack-precio-final fade-up">
-          <p style="font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Tu inversión</p>
-          <div class="stack-numero">$60.000</div>
-          <p style="font-family:var(--fuente-display); font-size:1.2rem; font-weight:700; color:var(--color-muted); margin-top:4px;">CLP — ciclo completo de 14 días</p>
-          <div class="stack-comparacion">
-            <span>Menos que una clase particular</span>
-            <span>60% menos que el valor de referencia</span>
-          </div>
-        </div>
+        <h2 class="fade-up">Qué incluye</h2>
+        <ul class="lista-seccion fade-up">
+          <li>4 sesiones en grupo chico</li>
+          <li>Corrección directa de Marquis en cancha</li>
+          <li>Análisis de video de tu juego</li>
+          <li>Feedback personalizado para saber qué corregir en partido</li>
+        </ul>
+        <p class="fade-up" style="margin-top: var(--espacio-md);">Precio ciclo completo: <strong>$60.000 CLP</strong></p>
+        <p class="fade-up" style="margin-top: 6px;">Puedes reservar tu cupo por WhatsApp.</p>
+        <a class="btn-cta fade-up" href="https://wa.me/56985962885?text=Hola%20Marquis%2C%20vi%20el%20Sprint%2014D%20para%20adultos%20en%20Puerto%20Montt.%20%C2%BFTodav%C3%ADa%20quedan%20cupos%20para%20empezar%20el%20lunes%204%20de%20mayo%3F" target="_blank" rel="noopener noreferrer" onclick="if (typeof fbq === 'function') { fbq('track', 'Contact'); } setTimeout(function(){ window.open(this.href, '_blank'); }.bind(this), 250); return false;" style="margin-top: var(--espacio-md);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#000" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.058 23.5l5.818-1.527A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.019-1.382l-.36-.214-3.732.979.997-3.645-.234-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Preguntar si quedan cupos
+        </a>
       </div>
     </section>
 
